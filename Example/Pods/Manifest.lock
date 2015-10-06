@@ -1,0 +1,46 @@
+PODS:
+  - ABOnboarding (0.1.0):
+    - AMPopTip
+    - AVAnimator
+    - pop
+    - TAPageControl
+  - AMPopTip (0.9.12)
+  - AVAnimator (2.0.0):
+    - AVAnimator/ASM (= 2.0.0)
+  - AVAnimator/ASM (2.0.0)
+  - Expecta (1.0.3)
+  - Expecta+Snapshots (2.0.0):
+    - Expecta (~> 1.0)
+    - FBSnapshotTestCase/Core (~> 2.0.3)
+  - FBSnapshotTestCase (2.0.4):
+    - FBSnapshotTestCase/SwiftSupport (= 2.0.4)
+  - FBSnapshotTestCase/Core (2.0.4)
+  - FBSnapshotTestCase/SwiftSupport (2.0.4):
+    - FBSnapshotTestCase/Core
+  - pop (1.0.8)
+  - Specta (1.0.4)
+  - TAPageControl (0.2.0)
+
+DEPENDENCIES:
+  - ABOnboarding (from `../`)
+  - Expecta
+  - Expecta+Snapshots
+  - FBSnapshotTestCase
+  - Specta
+
+EXTERNAL SOURCES:
+  ABOnboarding:
+    :path: ../
+
+SPEC CHECKSUMS:
+  ABOnboarding: 41742895a0313b86b6cd0435c4b56e9a2f7c49cd
+  AMPopTip: 3c98a9b38148868366b57765064bd9565f653038
+  AVAnimator: 90696708fc92b09eda81e7d5b70a7494624775ed
+  Expecta: 9d1bff6c8b0eeee73a166a2ee898892478927a15
+  Expecta+Snapshots: 29b38dd695bc72a0ed2bea833937d78df41943ba
+  FBSnapshotTestCase: d94cf34841c9e77390e29009e8e2713479d48753
+  pop: bb773ae2c791ca2629de13b347e7a8b450fa6a57
+  Specta: 69bb134672aae190a1379ff91df07dad8dd1f869
+  TAPageControl: fd11d779bbb5c2464ca2f55dde9e288213ea8a9b
+
+COCOAPODS: 0.38.2

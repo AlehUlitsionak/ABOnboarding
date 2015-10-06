@@ -1,0 +1,6 @@
+framework module Pods_ABOnboarding_Example {
+  umbrella header "Pods-ABOnboarding_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

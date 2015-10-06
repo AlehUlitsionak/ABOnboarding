@@ -1,0 +1,1 @@
+../../../AVAnimator/Classes/AVAnimator/maxvid_file.h

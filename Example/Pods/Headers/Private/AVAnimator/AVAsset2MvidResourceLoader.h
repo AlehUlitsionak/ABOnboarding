@@ -1,0 +1,1 @@
+../../../AVAnimator/Classes/AVAnimator/AVAsset2MvidResourceLoader.h

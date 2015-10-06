@@ -1,0 +1,1 @@
+../../../AVAnimator/Classes/AutoPropertyRelease.h

@@ -1,0 +1,42 @@
+{
+  "name": "ABOnboarding",
+  "version": "0.1.0",
+  "summary": "App on-boarding made easy for the iPhone",
+  "description": "",
+  "homepage": "https://github.com/ale0xB/ABOnboarding",
+  "license": "MIT",
+  "authors": {
+    "Alex Benito": "alex@avrora.io"
+  },
+  "source": {
+    "git": "https://github.com/ale0xB/ABOnboarding.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.2"
+  },
+  "requires_arc": true,
+  "source_files": [
+    "Pod/Classes/**/*",
+    "Pod/Categories/**/*"
+  ],
+  "resource_bundles": {
+    "ABOnboarding": [
+      "Pod/Assets/*.png"
+    ]
+  },
+  "dependencies": {
+    "AVAnimator": [
+
+    ],
+    "AMPopTip": [
+
+    ],
+    "TAPageControl": [
+
+    ],
+    "pop": [
+
+    ]
+  }
+}

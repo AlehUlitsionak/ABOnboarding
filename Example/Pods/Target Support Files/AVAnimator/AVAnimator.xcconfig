@@ -1,0 +1,1 @@
+AVANIMATOR_OTHER_LDFLAGS = -l"z" -framework "AVFoundation" -framework "AudioToolbox" -framework "CoreMedia" -framework "CoreVideo" -framework "MediaPlayer" -framework "QuartzCore"

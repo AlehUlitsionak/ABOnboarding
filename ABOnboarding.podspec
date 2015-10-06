@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = "ABOnboarding"
   s.version          = "0.1.0"
-  s.summary          = "A short description of ABOnboarding."
+  s.summary          = "App on-boarding made easy for the iPhone"
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -19,22 +19,27 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
                        DESC
 
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/ABOnboarding"
+  s.homepage         = "https://github.com/ale0xB/ABOnboarding"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "Alex Benito" => "alex@avrora.io" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/ABOnboarding.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.source           = { :git => "https://github.com/ale0xB/ABOnboarding.git", :tag => s.version.to_s }
+  # s.social_media_url = 'https://twitter.com/ale0xB'
 
-  s.platform     = :ios, '7.0'
+  s.platform     = :ios, '8.2'
   s.requires_arc = true
 
-  s.source_files = 'Pod/Classes/**/*'
+  s.source_files = 'Pod/Classes/**/*', 'Pod/Categories/**/*'
   s.resource_bundles = {
     'ABOnboarding' => ['Pod/Assets/*.png']
   }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
+  # s.public_header_files = 'Pod/Classes/**/*.h', 'Pod/Categories/**/*'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
+  
+  s.dependency 'AVAnimator'
+  s.dependency 'AMPopTip'
+  s.dependency 'TAPageControl'  
+  s.dependency 'pop' 
 end

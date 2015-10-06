@@ -1,0 +1,1 @@
+../../../AVAnimator/Classes/LZMASDK/RotateDefs.h
