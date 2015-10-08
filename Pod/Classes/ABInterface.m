@@ -8,7 +8,7 @@
 
 #import "ABInterface.h"
 #import "UIButton+Animation.h"
-#import "ABWalkthroughViewController.h"
+#import "ABOnboardingViewController.h"
 
 @interface ABInterface ()
 
@@ -17,7 +17,7 @@
 @property (assign, nonatomic) CGFloat textDistance;
 
 @property (strong, nonatomic) UILabel *textLabel;
-@property (strong, nonatomic) IBOutlet UIImageView *imageView;
+@property (strong, nonatomic) UIImageView *imageView;
 //@property (strong, nonatomic) IBOutlet UIButton *getStarted;
 //@property (strong, nonatomic) IBOutlet UIButton *signIn;
 //@property (strong, nonatomic) IBOutlet UIButton *signUp;

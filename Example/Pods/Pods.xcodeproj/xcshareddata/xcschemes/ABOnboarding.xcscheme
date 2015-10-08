@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2A704FDD659CAA0E18EAC6BE"
+               BlueprintIdentifier = "FF7AC377F5A89A3EA9B98C10"
                BuildableName = "ABOnboarding.framework"
                BlueprintName = "ABOnboarding"
                ReferencedContainer = "container:Pods.xcodeproj">

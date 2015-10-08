@@ -7,13 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ABOnboardingContentViewController.h"
 
-@interface ABVideoLoopViewController : UIViewController
+@interface ABVideoLoopViewController : ABOnboardingContentViewController
 
-@property (strong, nonatomic) NSString *resFileName;
-@property (strong, nonatomic) UILabel *textLabel;
-
-
-- (instancetype)initWithText:(NSString *)text andDistanceToTopLayoutGuide:(CGFloat)textDistance;
+@property (weak, nonatomic)     UIView *videoPlayerView;
+@property (strong, nonatomic)   IBInspectable NSString *videoFileName;
 
 @end
