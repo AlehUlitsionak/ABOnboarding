@@ -8,16 +8,15 @@
 
 #import "ABVideoLoopViewController.h"
 #import "ABOnboardingViewController.h"
-#import <AVAnimator/AVAnimatorMedia.h>
-#import <AVAnimator/AVAnimatorLayer.h>
-#import <AVAsset2MvidResourceLoader.h>
-#import <AVMvidFrameDecoder.h>
-#import <AVFileUtil.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface ABVideoLoopViewController ()
 
-@property (strong, nonatomic) AVAnimatorLayer *animatorLayer;
-@property (strong, nonatomic) AVAnimatorMedia *media;
+//@property (strong, nonatomic) AVAnimatorLayer *animatorLayer;
+//@property (strong, nonatomic) AVAnimatorMedia *media;
+
+@property (strong, nonatomic) AVPlayer *player;
+@property (strong, nonatomic) AVPlayerLayer *playerLayer;
 
 @property (strong, nonatomic) NSString *text;
 @property (assign, nonatomic) CGFloat textDistance;
@@ -79,51 +78,69 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)viewWillAppear:(BOOL)animated
+//-(void)viewWillAppear:(BOOL)animated
+//{
+//    [super viewWillAppear:animated];
+////    [self.media startAnimator];
+//
+//}
+
+- (void)viewDidAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
-    [self.media startAnimator];
+    [super viewDidAppear:animated];
+    [self.player play];
 }
 
 - (void)prepareVideo
 {
     CALayer *mainLayer = self.videoPlayerView.layer;
-    CALayer *renderLayer = [[CALayer alloc] init];
     
-    renderLayer.backgroundColor = [UIColor whiteColor].CGColor;
-    renderLayer.masksToBounds = YES;
+    AVPlayerItem *playerItem = [AVPlayerItem
+                                playerItemWithURL:[[NSBundle mainBundle]
+                                                   URLForResource:self.videoFileName
+                                                   withExtension:@"m4v"]];
+    self.player = [AVPlayer playerWithPlayerItem:playerItem];
+//    [_player addObserver:self forKeyPath:@"rate" options:0 context:NULL];
+    self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
+    [self.playerLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
+    self.playerLayer.frame = mainLayer.bounds;
+
+    [mainLayer addSublayer:self.playerLayer];
     
-    CGRect rendererFrame = self.videoPlayerView.layer.frame;
-    renderLayer.frame = rendererFrame;
+    [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 100) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
+        if (CMTimeCompare(time, self.player.currentItem.duration) >= 0) {
+            [self.player seekToTime:kCMTimeZero];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.player play];
+            });
+        }
+    }];
     
-    renderLayer.position = CGPointMake(CGRectGetMidX(rendererFrame), CGRectGetMidY(rendererFrame));
-    [mainLayer addSublayer:renderLayer];
-    
-    AVAnimatorLayer *avAnimatorLayer = [AVAnimatorLayer aVAnimatorLayer:renderLayer];
-    
-    self.media = [AVAnimatorMedia aVAnimatorMedia];
-    
-    AVAsset2MvidResourceLoader *resLoader = [AVAsset2MvidResourceLoader aVAsset2MvidResourceLoader];
-    
-    
-    NSString *tmpFileName = [[self.videoFileName stringByDeletingPathExtension] stringByAppendingPathExtension:@"mvid"];
-    NSString *tmpPath = [AVFileUtil getTmpDirPath:tmpFileName];
-    
-    resLoader.movieFilename = self.videoFileName;
-    resLoader.outPath = tmpPath;
-    
-    self.media.resourceLoader = resLoader;
-    self.media.frameDecoder = [AVMvidFrameDecoder aVMvidFrameDecoder];
-    
-    self.media.animatorRepeatCount = INT_MAX;
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animatorDoneNotification:) name:AVAnimatorDoneNotification object:self.media];
-    
-    [avAnimatorLayer attachMedia:self.media];
-    
-    self.animatorLayer = avAnimatorLayer;
-    
-    [self.media prepareToAnimate];
+//    AVAnimatorLayer *avAnimatorLayer = [AVAnimatorLayer aVAnimatorLayer:renderLayer];
+//    
+//    self.media = [AVAnimatorMedia aVAnimatorMedia];
+//    
+//    AVAsset2MvidResourceLoader *resLoader = [AVAsset2MvidResourceLoader aVAsset2MvidResourceLoader];
+//    
+//    
+//    NSString *tmpFileName = [[self.videoFileName stringByDeletingPathExtension] stringByAppendingPathExtension:@"mvid"];
+//    NSString *tmpPath = [AVFileUtil getTmpDirPath:tmpFileName];
+//    
+//    resLoader.movieFilename = self.videoFileName;
+//    resLoader.outPath = tmpPath;
+//    
+//    self.media.resourceLoader = resLoader;
+//    self.media.frameDecoder = [AVMvidFrameDecoder aVMvidFrameDecoder];
+//    
+//    self.media.animatorRepeatCount = INT_MAX;
+//    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animatorDoneNotification:) name:AVAnimatorDoneNotification object:self.media];
+//    
+//    [avAnimatorLayer attachMedia:self.media];
+//    
+//    self.animatorLayer = avAnimatorLayer;
+//    
+//    [self.media prepareToAnimate];
 }
 
 
@@ -141,10 +158,10 @@
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-//    [self.animatorLayer.layer setFrame:self.videoPlayerView.layer.frame];
+    [self.playerLayer setFrame:self.videoPlayerView.layer.bounds];
     
-    CGRect rendererFrame = self.videoPlayerView.layer.bounds;
-    self.animatorLayer.layer.frame = rendererFrame;
+//    CGRect rendererFrame = self.videoPlayerView.layer.bounds;
+//    self.animatorLayer.layer.frame = rendererFrame;
 //    self.animatorLayer.layer setFrame:CGRectMake(0, 0, CGRectGetWidth(self.ani), <#CGFloat height#>)
 //    self.animatorLayer.layer.position = CGPointMake(CGRectGetMidX(rendererFrame), CGRectGetMidY(rendererFrame));
 }

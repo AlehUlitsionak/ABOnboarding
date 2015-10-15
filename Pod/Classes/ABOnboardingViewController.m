@@ -47,6 +47,9 @@ static NSString *const kABWalkthroughDescriptionTextKey     = @"ABWalkthroughDes
 @property (assign, nonatomic) NSInteger otherPageNumber;
 @property (assign, nonatomic) CGFloat lastContentOffset;
 
+@property (strong, nonatomic) UIImageView *leftArrow;
+@property (strong, nonatomic) UIImageView *rightArrow;
+
 @end
 
 @implementation ABOnboardingViewController
@@ -130,6 +133,7 @@ CGFloat getFrameWidth(ABOnboardingViewController *object)
                              (id)[UIColor colorWithRed:242.0f / 255.0f green:128.0f / 255.0f blue:105.0f / 255.0f alpha:1.0f].CGColor];
     [gradientLayer setFrame:self.view.bounds];
     [self.view.layer insertSublayer:gradientLayer atIndex:0];
+    
 }
 
 //-(void)viewWillAppear:(BOOL)animated
@@ -227,6 +231,11 @@ CGFloat getFrameWidth(ABOnboardingViewController *object)
                                options:0
                                metrics:nil
                                views:scrollBinding]];
+    
+//    [self.view bringSubviewToFront:self.leftArrow];
+//    [self.view bringSubviewToFront:self.rightArrow];
+//    
+//    [self.leftArrow setHidden:YES];
     
     
 //    LITKeyboardViewController *litKeyboardViewController = [self instantiateKeyboardControllerForIndex:0];
@@ -340,17 +349,6 @@ CGFloat getFrameWidth(ABOnboardingViewController *object)
 //}
 
 #pragma mark - UIPageControllerDelegate
-
-- (void)pageViewController:(UIPageViewController *)pageViewController
-        didFinishAnimating:(BOOL)finished
-   previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers
-       transitionCompleted:(BOOL)completed
-{
-//    if (completed) {
-//        UIViewController *controller = [pageViewController.viewControllers lastObject];
-//        self.currentPage = [self.keyboardViewControllers indexOfObject:controller];
-//    }
-}
 
 - (UIInterfaceOrientationMask)pageViewControllerSupportedInterfaceOrientations:(UIPageViewController *)pageViewController
 {
