@@ -107,11 +107,13 @@
 
     [mainLayer addSublayer:self.playerLayer];
     
+    __weak typeof(self) weakSelf = self;
     [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 100) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
+        __strong typeof(weakSelf) strongSelf = weakSelf;
         if (CMTimeCompare(time, self.player.currentItem.duration) >= 0) {
-            [self.player seekToTime:kCMTimeZero];
+            [strongSelf.player seekToTime:kCMTimeZero];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self.player play];
+                [strongSelf.player play];
             });
         }
     }];

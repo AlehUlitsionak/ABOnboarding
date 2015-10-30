@@ -43,15 +43,15 @@
 - (ABOnboardingViewController *)onBoardingViewController
 {
     UIViewController *viewController = self;
-    ABOnboardingViewController *onBoardingViewController;
     while (viewController.parentViewController) {
         if ([viewController.parentViewController isKindOfClass:[ABOnboardingViewController class]]) {
-            return viewController.parentViewController;
+            return (ABOnboardingViewController *)viewController.parentViewController;
         } else {
             viewController = viewController.parentViewController;
         }
     }
-    NSAssert(onBoardingViewController, @"Couldn't find parent onboarding view controller");
+    NSAssert(viewController, @"Couldn't find parent onboarding view controller");
+    return nil;
 }
 
 @end
