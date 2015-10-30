@@ -38,8 +38,4 @@ Pod::Spec.new do |s|
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
   
-  s.dependency 'AVAnimator'
-  s.dependency 'AMPopTip'
-  s.dependency 'TAPageControl'  
-  s.dependency 'pop' 
 end

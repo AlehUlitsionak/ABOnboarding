@@ -7,11 +7,8 @@
 //
 
 #import "ABOnboardingViewController.h"
-#import "ABInterface.h"
 #import "ABVideoLoopViewController.h"
-#import <AMPopTip.h>
 #import <QuartzCore/QuartzCore.h>
-#import <AVAnimator/AVAnimatorMedia.h>
 
 
 typedef NS_ENUM(NSInteger, ABWalkthroughSlideType) {
@@ -25,8 +22,8 @@ typedef NS_ENUM(NSInteger, ABWalkthroughScrollDirection) {
 };
 
 
-static CGFloat const ABPercentageMultiplier = 0.4;
-CGFloat const ABMotionFrameOffset    = 15.0;
+//static CGFloat const ABPercentageMultiplier = 0.4;
+//CGFloat const ABMotionFrameOffset    = 15.0;
 
 static NSString *const kABWalkthroughTextDistanceKey        = @"ABWalkthroughTextDistanceKey";
 static NSString *const kABWalkthroughDescriptionTextKey     = @"ABWalkthroughDescriptionTextKey";
@@ -42,7 +39,6 @@ static NSString *const kABWalkthroughDescriptionTextKey     = @"ABWalkthroughDes
 @property (strong, nonatomic) NSMutableArray *videoFileNames;
 @property (strong, nonatomic) NSMutableArray *images;
 
-@property (strong, nonatomic) TAPageControl *pageControl;
 
 @property (assign, nonatomic) NSInteger otherPageNumber;
 @property (assign, nonatomic) CGFloat lastContentOffset;

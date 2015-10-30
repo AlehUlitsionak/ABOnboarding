@@ -7,14 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <TAPageControl.h>
-#import "ABInterface.h"
 
 extern CGFloat const ABMotionFrameOffset;
 
 @protocol ABWalkthroughViewControllerDelegate;
 
-@interface ABOnboardingViewController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate, ABInterfaceDelegate>
+@interface ABOnboardingViewController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate>
 
 @property (strong, nonatomic, readonly) NSArray *childrenStoryboardIds;
 //@property (strong, nonatomic) UIScrollView *scrollView;
@@ -26,10 +24,10 @@ extern CGFloat const ABMotionFrameOffset;
 
 + (instancetype)onboardingViewControllerWithChildrenStoryboardIds:(NSArray *)childrenStoryboardIds
                                                     forStoryboard:(UIStoryboard *)storyboard;
-- (void)addPageWithImage:(UIImage *)image andDescription:(NSString *)description withDistanceToTopLayoutGuide:(CGFloat)textDistance;
-- (void)addPageWithVideoFileName:(NSString *)videoFileName andDescription:(NSString *)description withDistanceToTopLayoutGuide:(CGFloat)textDistance;
-- (void)showTooltipAtPageIndex:(NSUInteger)index withText:(NSString *)text andDuration:(NSTimeInterval)duration;
-- (void)hideTooltipAtPageIndex:(NSUInteger)index;
+//- (void)addPageWithImage:(UIImage *)image andDescription:(NSString *)description withDistanceToTopLayoutGuide:(CGFloat)textDistance;
+//- (void)addPageWithVideoFileName:(NSString *)videoFileName andDescription:(NSString *)description withDistanceToTopLayoutGuide:(CGFloat)textDistance;
+//- (void)showTooltipAtPageIndex:(NSUInteger)index withText:(NSString *)text andDuration:(NSTimeInterval)duration;
+//- (void)hideTooltipAtPageIndex:(NSUInteger)index;
 
 - (void)requestPushNotifications;
 - (void)finishOnboarding;
